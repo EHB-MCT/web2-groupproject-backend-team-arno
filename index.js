@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 
 // Root route
-app.get("/apiDocu", (req, res) => {
+app.get("/", (req, res) => {
     res.status(300).redirect("/info.html");
 });
 
