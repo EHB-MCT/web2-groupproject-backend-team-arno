@@ -4,16 +4,23 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>API Documentatie</title>
+        <title>API Documentation</title>
     </head>
     <body>
         <h1>WEB 2 - SESSION 7 - Groupproject API Documentation</h1>
-        <ol>
-            <li>GET - Documentation</li>
-            <li>GET/challenges - Returns all challenges from the collection challenges</li>
-            <li>POST/challenges - Save a challenge in the database. Add data to the body of the request</li>
-            <li>PUT/challeneges/:id - Update the challenge with the id provided</li>
-            <li>DELETE/challenges/:id - Delete the challenge with the id provided</li>
-        </ol>
+        <dl>
+            <dt>GET /apidocu</dt>
+            <dd>Redirects you to the info page about how to use our challenges API</dd>
+            <dt>GET /challenges</dt>
+            <dd>Returns all challenges from the collection challenges</dd>
+            <dt>GET /challenge/:id</dt>
+            <dd>Returns a single challenge from the collection challenges. This method requires an ObjectId to be given along.</dd>
+            <dt>POST /challenge/</dt>
+            <dd>Creates a challenge in the database. Add data to the body of the request</dd>
+            <dt>PUT /challenges/:id</dt>
+            <dd>Update the challenge with the id provided</dd>
+            <dt>DELETE /challenges/:id</dt>
+            <dd>Delete the challenge with the id provided</dd>
+        </dl>
     </body>
 </html>

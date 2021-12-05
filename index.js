@@ -17,7 +17,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 
 // Root route
-app.get("/", (req, res) => {
+app.get("/apiDocu", (req, res) => {
     res.status(300).redirect("/info.html");
 });
 
@@ -45,7 +45,7 @@ app.get("/challenges", async (req, res) => {
 });
 
 // Return a single challenge
-app.get("/challenge", async (req, res) => {
+app.get("/challenge/:id", async (req, res) => {
     // id is located in the query: req.query.id
     try {
         // Connect to the database
@@ -78,7 +78,7 @@ app.get("/challenge", async (req, res) => {
 });
 
 // Save a challenge
-app.post("/challenges", async (req, res) => {
+app.post("/challenge", async (req, res) => {
     // Validation
     if (!req.body.name || !req.body.points || !req.body.session || !req.body.course) {
         res.status(400).send("Bad request: Missing name, points, session or course");
@@ -110,7 +110,7 @@ app.post("/challenges", async (req, res) => {
         let insertResult = await col.insertOne(newChal);
 
         // Send back success message
-        res.status(201).send(`Challenge with id "${req.query.id}" successfully saved.`);
+        res.status(201).send(`Challenge with name \"${req.body.name}\" successfully saved.`);
         return;
     } catch (error) {
         res.status(500).send({
