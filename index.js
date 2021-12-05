@@ -2,16 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { MongoClient } = require("mongodb");
 const ObjectId = require("mongodb").ObjectId;
+// Had to make a path import because for some reason vsc didn't recognize my .env file
+const path = require("path");
+require("dotenv").config({ path: path.resolve(".env") });
 
-// Replace the following with your Atlas connection string
-const url = "mongodb+srv://ArnoStephanSacha:GeenWW@cluster0.8bqlv.mongodb.net/ArnoStephanSacha?retryWrites=true&w=majority";
-const client = new MongoClient(url);
-
-// The database to use
-const dbName = "ArnoStephanSacha";
+const client = new MongoClient(process.env.FINAL_URL);
 
 const app = express();
-const port = 1337;
+const port = process.env.PORT;
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
