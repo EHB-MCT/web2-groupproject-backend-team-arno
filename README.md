@@ -9,6 +9,7 @@ Group project with the members: Arno, Sacha, Stephan
 - [body-parser](https://www.npmjs.com/package/body-parser)
 - [mongodb](https://www.npmjs.com/package/mongodb)
 - [express](https://www.npmjs.com/package/express)
+- [dotenv](https://www.npmjs.com/package/dotenv)
 
 ## Downloading and installing packages locally
 
@@ -35,5 +36,8 @@ npm i mongodb
 ```
 ```
 npm i express
+```
+```
+npm i dotenv
 ```
 For those who are curious and would like to read more about using packages or modules, make sure to visit [npm](https://www.npmjs.com/). and read their [docs](https://docs.npmjs.com/).
