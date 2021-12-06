@@ -92,7 +92,7 @@ app.post("/challenge", async (req, res) => {
         await client.connect();
 
         // Retrieve the challenges collection data
-        // const col = client.db("ArnoStephanSacha").collection("challenges");
+        const col = client.db("ArnoStephanSacha").collection("challenges");
 
         // Validation for double challenges
         // const chal = await col.findOne({ name: req.body.name, points: req.body.points, session: req.body.session, course: req.body.course });
