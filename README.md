@@ -4,7 +4,7 @@ Group project with the members: Arno, Sacha, Stephan
 
 # Challenges API
 
-Click [here](web2-groupproject-backend.herokuapp.com) to read more about the documentation of our Challenges API.
+Click [here](https://web2-groupproject-backend.herokuapp.com) to read more about the documentation of our Challenges API.
 
 ## Packages used
 
