@@ -14,10 +14,10 @@ const { MongoClient } = require("mongodb");
 // Replace the following with your Atlas connection string                                                                                                                                        
 const url = "mongodb+srv://ArnoStephanSacha:GeenWW@cluster0.8bqlv.mongodb.net/ArnoStephanSacha?retryWrites=true&w=majority";
 const client = new MongoClient(url);
- 
+
 // The database to use
 const dbName = "ArnoStephanSacha";
-                        
+
 async function run() {
   try {
     await client.connect();
@@ -28,16 +28,21 @@ async function run() {
     const challenges = db.collection("challenges");
     const users = db.collection("users");
 
-    // Construct a document                                                                                                                                                              
+    // Construct a document for the challenges
     let challenge = {
       name: "challenge5",
       points: 82,
       session: "session6",
       course: "WEBII"
     }
+    // Construct a document for the challenges
+    let user = {
+      name: "iets",
+    }
 
     // Insert a single document, wait for promise so we can read it back
-    const p = await challenges.insertOne(challenge);
+    const insertChallenge = await challenges.insertOne(challenge);
+    const insertUser = await users.insertOne(user);
     // Find one document
     const oneChallenge = await challenges.findOne();
     // Print to the console
@@ -48,6 +53,14 @@ async function run() {
   } finally {
     await client.close();
   }
+}
+
+function addUser(users){
+  let user = {
+    name: "iets",
+
+  }
+  const p = await users.insertOne(user);
 }
 
 run().catch(console.dir);
