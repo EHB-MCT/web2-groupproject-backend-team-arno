@@ -5,7 +5,7 @@ const ObjectId = require("mongodb").ObjectId;
 // Had to make a path import because for some reason vsc didn't recognize my .env file
 const path = require("path");
 require("dotenv").config({ path: path.resolve(".env") });
-const cors = require("cors")
+const cors = require("cors");
 
 const client = new MongoClient(process.env.FINAL_URL);
 
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
-app.use(cors())
+app.use(cors());
 // Root route
 app.get("/", (req, res) => {
   res.status(300).redirect("/info.html");
@@ -104,11 +104,18 @@ app.post("/challenge", async (req, res) => {
     // Retrieve the challenges collection data
     const col = client.db("ArnoStephanSacha").collection("challenges");
 
-    Validation for double challenges
-    const chal = await col.findOne({ name: req.body.name, points: req.body.points, session: req.body.session, course: req.body.course });
+    // Validation for double challenges
+    const chal = await col.findOne({
+      name: req.body.name,
+      points: req.body.points,
+      session: req.body.session,
+      course: req.body.course,
+    });
     if (chal) {
-        res.status(400).send(`Challenge with name \"${req.body.name}\" already exists`);
-        return;
+      res
+        .status(400)
+        .send(`Challenge with name \"${req.body.name}\" already exists`);
+      return;
     }
 
     // Create the new challenge object
