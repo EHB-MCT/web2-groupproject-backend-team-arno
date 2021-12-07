@@ -130,9 +130,7 @@ app.post("/challenge", async (req, res) => {
     let insertResult = await col.insertOne(newChal);
 
     // Send back success message
-    res
-      .status(201)
-      .send(`Challenge with name \"${req.body.name}\" successfully saved.`);
+    res.status(201).json(newChal);
     return;
   } catch (error) {
     res.status(500).send({
