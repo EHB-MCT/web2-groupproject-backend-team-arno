@@ -100,10 +100,10 @@ app.post("/challenge", async (req, res) => {
   try {
     // Connect to the database
     await client.connect();
-
+    console.log("connected");
     // Retrieve the challenges collection data
     const col = client.db("ArnoStephanSacha").collection("challenges");
-
+    console.log("connected2");
     // Validation for double challenges
     const chal = await col.findOne({
       name: req.body.name,
@@ -111,13 +111,14 @@ app.post("/challenge", async (req, res) => {
       session: req.body.session,
       course: req.body.course,
     });
+    console.log("connected3");
     if (chal) {
       res
         .status(400)
         .send(`Challenge with name \"${req.body.name}\" already exists`);
       return;
     }
-
+    console.log("connected4");
     // Create the new challenge object
     let newChal = {
       name: req.body.name,
@@ -128,9 +129,10 @@ app.post("/challenge", async (req, res) => {
 
     // Insert into the database
     let insertResult = await col.insertOne(newChal);
-
+    console.log("connected5");
     // Send back success message
     res.status(201).json(newChal);
+    console.log("connected6");
     return;
   } catch (error) {
     res.status(500).send({
